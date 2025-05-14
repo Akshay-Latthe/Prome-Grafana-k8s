@@ -15,7 +15,7 @@ This guide provides detailed instructions for setting up a comprehensive monitor
 
 The monitoring solution consists of several components:
 
-![Kubernetes Observability Architecture](1observability.png)
+![Kubernetes Observability Architecture](images/1observability.png)
 
 The architecture includes:
 - **Prometheus**: For metrics collection and storage
@@ -25,7 +25,7 @@ The architecture includes:
 
 The diagram below shows the detailed architecture of the monitoring stack:
 
-![Detailed Architecture](arch.png)
+![Detailed Architecture](images/arch.png)
 
 ## Prerequisites
 
@@ -48,7 +48,7 @@ helm repo update
 helm repo list
 ```
 
-![Command Output](comand1.png)
+![Command Output](images/comand1.png)
 
 ### 2. Create a Dedicated Namespace for Monitoring
 
@@ -79,7 +79,7 @@ Check that all pods in the monitoring namespace are running properly:
 kubectl --namespace monitoring get pods
 ```
 
-![Pod Status](comand2.png)
+![Pod Status](images/comand2.png)
 
 ## Accessing Monitoring Tools
 
@@ -93,7 +93,7 @@ kubectl port-forward svc/prometheus-stack-kube-prom-prometheus 9090:9090 -n moni
 
 You can now access the Prometheus dashboard at: http://localhost:9090
 
-![Prometheus Port Forward](comand3.1.png)
+![Prometheus Port Forward](images/comand3.1.png)
 
 ### Grafana Dashboard
 
@@ -105,9 +105,9 @@ kubectl port-forward svc/prometheus-stack-grafana 3000:80 -n monitoring --addres
 
 You can now access the Grafana dashboard at: http://localhost:3000
 
-![Grafana Port Forward](comand3.2.png)
+![Grafana Port Forward](images/comand3.2.png)
 
-![Grafana Login Page](image1.png)
+![Grafana Login Page](images/image1.png)
 
 ## Retrieving Grafana Credentials
 
@@ -117,7 +117,7 @@ The default username for Grafana is `admin`. To retrieve the auto-generated pass
 kubectl get secret prometheus-stack-grafana -n monitoring -o jsonpath="{.data.admin-password}" | base64 --decode
 ```
 
-![Retrieve Password](comand4.png)
+![Retrieve Password](images/comand4.png)
 
 ## References
 
@@ -126,13 +126,13 @@ kubectl get secret prometheus-stack-grafana -n monitoring -o jsonpath="{.data.ad
 - [Grafana Documentation](https://grafana.com/docs/)
 
 
-![Grafana Datasource](image2.png)
+![Grafana Datasource](images/image2.png)
 
 
-![Default Grafana Datasource from Helm charts](image3.png)
+![Default Grafana Datasource from Helm charts](images/image3.png)
 
 
-![Grafana Officla Page for Importing New Dashbords](image4.png)
+![Grafana Officla Page for Importing New Dashbords](images/image4.png)
 
 
-![Imoport New Dashbords](image5.png)
+![Imoport New Dashbords](images/image5.png)
